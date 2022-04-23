@@ -1,0 +1,26 @@
+{
+  "name": "make-cli",
+  "bin": {
+    "make-cli": "./bin/www"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "husky": "^7.0.4"
+  },
+  "dependencies": {
+    "chalk": "2.4",
+    "commander": "^9.2.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.2.2",
+    "ora": "2"
+  }
+}
