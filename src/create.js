@@ -6,7 +6,7 @@ const fetchTemplate = async (options, filename) => {
     // 根据template选择模板
     const loading = ora('fetching')
     loading.start()
-   download('song-will/template', `${process.cwd()}/${filename}`,  err => {
+    download('song-will/template-vue3', `${process.cwd()}/${filename}`,  err => {
        if (err) {
            console.log('err:', err)
            return
@@ -55,6 +55,6 @@ const askOptions = async () => {
 module.exports = async (projectName) => {
 
     // fetchTemplate(projectName)
-    const result = await askOptions()
-    fetchTemplate(result, projectName)
+    // const result = await askOptions()
+    fetchTemplate(null, projectName)
 }

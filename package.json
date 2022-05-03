@@ -1,5 +1,5 @@
 {
-  "name": "make-cli",
+  "name": "@exile_song/make-cli",
   "bin": {
     "make-cli": "./bin/www"
   },
