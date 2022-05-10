@@ -2,11 +2,18 @@ const download = require('download-git-repo') // github api 拉取代码
 const inquirer = require('inquirer')
 const ora = require('ora')
 
+const templateMap = {
+    plain: 'template',
+    vue3: 'template-vue3'
+}
+
 const fetchTemplate = async (options, filename) => {
+    const { template } = options
+    const templateUrl = `song-will/${templateMap[template]}` 
     // 根据template选择模板
     const loading = ora('fetching')
     loading.start()
-    download('song-will/template-vue3', `${process.cwd()}/${filename}`,  err => {
+    download(templateUrl, `${process.cwd()}/${filename}`,  err => {
        if (err) {
            console.log('err:', err)
            return
@@ -15,7 +22,7 @@ const fetchTemplate = async (options, filename) => {
    })
 }
 
-const templateOptions = ['普通项目', 'vue', 'react']
+const templateOptions = ['plain', 'vue3']
 const styleOptions = ['无','less', 'sass']
 /**
  * 拉取代码之前询问配置，之后再根据用户选择
@@ -38,14 +45,14 @@ const askOptions = async () => {
             choices: templateOptions
         }
     ]);
-    const { style } = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'style',
-            message: '请选择css预处理器',
-            choices: styleOptions
-        }
-    ])
+    // const { style } = await inquirer.prompt([
+    //     {
+    //         type: 'list',
+    //         name: 'style',
+    //         message: '请选择css预处理器',
+    //         choices: styleOptions
+    //     }
+    // ])
     return {
         template
     }
@@ -55,6 +62,6 @@ const askOptions = async () => {
 module.exports = async (projectName) => {
 
     // fetchTemplate(projectName)
-    // const result = await askOptions()
-    fetchTemplate(null, projectName)
+    const result = await askOptions()
+    fetchTemplate(result, projectName)
 }
