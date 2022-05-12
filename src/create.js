@@ -23,7 +23,7 @@ const fetchTemplate = async (options, filename) => {
    })
 }
 
-const templateOptions = ['plain', 'vue3']
+const templateOptions = ['plain', 'vue2' ,'vue3']
 const styleOptions = ['无','less', 'sass']
 /**
  * 拉取代码之前询问配置，之后再根据用户选择
