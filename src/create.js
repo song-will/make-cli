@@ -4,6 +4,7 @@ const ora = require('ora')
 
 const templateMap = {
     plain: 'template',
+    vue2: 'template-vue2',
     vue3: 'template-vue3'
 }
 
